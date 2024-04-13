@@ -11,9 +11,8 @@ function App(){
     return (<>
         {alertVisable && <Alert onClose={()=>setAlertVisable(false)}>I TOLD YOU!</Alert>}
         <Button color='secondary' onClick={()=>setAlertVisable(true)}>DO NOT CLICK ME!</Button>
+        {renderList()}
     </>)
-
-    //return renderList()
 }
 
 
