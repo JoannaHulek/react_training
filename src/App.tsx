@@ -1,15 +1,17 @@
+import {Fragment, useState} from "react";
 import ListGroup from "./components/ListGroup.tsx";
 import Alert from "./components/Alert.tsx";
+import Button from "./components/Button.tsx";
+
+
 
 function App(){
+    const [alertVisable, setAlertVisable] = useState(false)
 
-    return (
-        <div>
-            <Alert>
-                Hello <i>World</i>
-            </Alert>
-    </div>
-    )
+    return (<>
+        {alertVisable && <Alert onClose={()=>setAlertVisable(false)}>I TOLD YOU!</Alert>}
+        <Button color='secondary' onClick={()=>setAlertVisable(true)}>DO NOT CLICK ME!</Button>
+    </>)
 
     //return renderList()
 }
