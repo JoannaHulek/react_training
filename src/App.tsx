@@ -1,7 +1,22 @@
 import ListGroup from "./components/ListGroup.tsx";
+import Alert from "./components/Alert.tsx";
 
 function App(){
-    let items= ['Tenczynek', 'Kaków', 'Nowy Jork']
+
+    return (
+        <div>
+            <Alert>
+                Hello <i>World</i>
+            </Alert>
+    </div>
+    )
+
+    //return renderList()
+}
+
+
+function renderList() {
+    let items = ['Tenczynek', 'Kaków', 'Nowy Jork']
 
     const handleSelectItem = (item: string) => {
         console.log(item)
@@ -12,6 +27,9 @@ function App(){
         <ListGroup items={['red', 'green', 'blue']} heading='Colors' onSelectItem={handleSelectItem}/>
         <ListGroup items={[]} heading='empty lis' onSelectItem={handleSelectItem}/>
     </div>
+
 }
+
+
 
 export default App
