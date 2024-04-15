@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
+import ListGroup from "./components/ListGroup";
+import Alert from "./components/Alert";
+import Button from "./components/Button";
+import Navbar from "./components/Navbar";
+import AboutMe from "./components/Bio";
+import Message from "./components/Message";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+  const [alertVisable, setAlertVisable] = useState(false)
+
+  return (<div>
+    {Navbar()}
+    {Message()}
+    {alertVisable && <Alert onClose={()=>setAlertVisable(false)}>I TOLD YOU!</Alert>}
+    <Button color='secondary' onClick={()=>setAlertVisable(true)}>DO NOT CLICK ME!</Button>
+    {renderList()}
+    <section id="bio">{AboutMe()}</section>
+  </div>)
 }
 
-export default App;
+function renderList() {
+  let items = ['Tenczynek', 'Kaków', 'Nowy Jork']
+
+  const handleSelectItem = (item: string) => {
+    console.log(item)
+  }
+
+  return <div>
+    <ListGroup items={items} heading='Cities' onSelectItem={handleSelectItem}/>
+    <ListGroup items={['red', 'green', 'blue']} heading='Colors' onSelectItem={handleSelectItem}/>
+    <ListGroup items={[]} heading='empty lis' onSelectItem={handleSelectItem}/>
+  </div>
+}
+
+export default App
